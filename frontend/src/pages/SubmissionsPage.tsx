@@ -170,20 +170,24 @@ export function SubmissionsPage() {
                 <Link
                   key={sub.submissionId}
                   to={`/submissions/${sub.submissionId}`}
-                  className="grid grid-cols-1 md:grid-cols-[1fr_100px_100px_180px] gap-2 md:gap-3 px-6 py-4 hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors duration-200 items-center"
+                  className="flex flex-col md:grid md:grid-cols-[1fr_100px_100px_180px] gap-3 px-6 py-4 hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors duration-200 items-stretch md:items-center"
                 >
-                  <div>
+                  <div className="flex items-center justify-between md:block">
                     <p className="text-[13px] font-medium text-zinc-950 dark:text-zinc-50 font-mono">
                       {sub.submissionId.slice(0, 12)}…
                     </p>
+                    <span className="md:hidden font-mono text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full">
+                      {LANG_DISPLAY[sub.language] || sub.language}
+                    </span>
                   </div>
-                  <span className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full w-fit">
+                  <span className="hidden md:inline-block font-mono text-[11px] text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full w-fit">
                     {LANG_DISPLAY[sub.language] || sub.language}
                   </span>
-                  <div>
+                  <div className="flex items-center justify-between md:block">
                     <StatusBadge status={sub.status} />
+                    <span className="md:hidden text-[11px] text-zinc-400 dark:text-zinc-500">{formatDate(sub.createdAt)}</span>
                   </div>
-                  <span className="text-[11px] text-zinc-400 dark:text-zinc-500">{formatDate(sub.createdAt)}</span>
+                  <span className="hidden md:inline-block text-[11px] text-zinc-400 dark:text-zinc-500">{formatDate(sub.createdAt)}</span>
                 </Link>
               ))
             )}

@@ -186,6 +186,32 @@ export function AppLayout() {
                 );
               })}
             </nav>
+            {/* Bottom (Mobile) */}
+            <div className="px-3 py-4 border-t border-black/[0.06] dark:border-white/[0.06]">
+              <div className="flex items-center gap-3 px-3 py-2">
+                <div className="size-8 overflow-hidden rounded-full bg-gradient-to-br from-violet-400 to-fuchsia-400 flex items-center justify-center text-white text-xs font-bold">
+                  {userImage ? (
+                    <img src={userImage} alt={userName} className="size-full object-cover" />
+                  ) : (
+                    <span>{userName.charAt(0).toUpperCase()}</span>
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium text-zinc-950 dark:text-zinc-50 truncate">
+                    {userName}
+                  </p>
+                  <p className="text-[11px] text-zinc-400 dark:text-zinc-500 truncate font-mono">
+                    {userEmail}
+                  </p>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="p-1.5 rounded-lg hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-zinc-400"
+                >
+                  <LogOut className="size-3.5" />
+                </button>
+              </div>
+            </div>
           </aside>
         </>
       )}

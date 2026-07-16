@@ -170,7 +170,7 @@ export function PlaygroundPage() {
   };
 
   return (
-    <div className="flex flex-col h-[100dvh] md:h-[100dvh] overflow-hidden">
+    <div className="flex flex-col h-[calc(100dvh-3.5rem)] md:h-[100dvh] overflow-hidden">
       {/* Toolbar */}
       <div className="relative z-[70] flex items-center justify-between px-4 py-2.5 border-b border-black/[0.06] dark:border-white/[0.06] bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl">
         <div className="flex items-center gap-2">
