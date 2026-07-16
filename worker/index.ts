@@ -13,7 +13,8 @@ while (1) {
   if (language === "python") {
     operation = spawn(process.platform === "win32" ? "py" : "python3", ["-"]);
   } else {
-    operation = spawn("node", ["--max-old-space-size=64", "-"]);
+    const nodePath = process.platform === "win32" ? "node" : "/usr/bin/node";
+    operation = spawn(nodePath, ["--max-old-space-size=64", "-"]);
   }
 
   console.log(element)

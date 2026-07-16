@@ -1,7 +1,8 @@
 import { createClient } from "redis"
 
+const redisUrl = process.env.REDIS_URL?.replace(/^["']|["']$/g, "");
 const redisClient = createClient({
-  url: process.env.REDIS_URL
+  url: redisUrl
 });
 
 // Dedicated client for pub/sub — a subscribed Redis client

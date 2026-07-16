@@ -29,6 +29,13 @@ RUN bun install
 
 # ---------- Stage 2: runtime ----------
 FROM oven/bun:1-debian AS runner
+
+RUN apt-get update && apt-get install -y curl python3 python3-pip && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Backend: only compiled dist + prod deps + prisma client

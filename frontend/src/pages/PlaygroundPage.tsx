@@ -38,7 +38,8 @@ export function PlaygroundPage() {
   const [profile, setProfile] = useState<{ state: "loading" | "authenticated" | "unauthenticated"; data: SessionPayload }>({ state: "loading", data: {} });
 
   useEffect(() => {
-    const es = new EventSource(`${import.meta.env.VITE_BACKEND_URL}/events`, {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "";
+    const es = new EventSource(`${backendUrl}/events`, {
       withCredentials: true,
     });
 

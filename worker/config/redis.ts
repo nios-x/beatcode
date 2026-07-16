@@ -1,7 +1,8 @@
 import { createClient } from "redis"
 
+const redisUrl = process.env.REDIS_URL?.replace(/^["']|["']$/g, "");
 const redisClient = createClient({
-  url: process.env.REDIS_URL
+  url: redisUrl
 });
 
 redisClient.on("error", function(err) {
