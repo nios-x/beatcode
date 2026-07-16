@@ -74,9 +74,9 @@ export function SubmissionsPage() {
       {/* Filters */}
       <div className="rounded-[2rem] p-1.5 ring-1 ring-black/[0.05] dark:ring-white/[0.06] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] bg-white/50 dark:bg-zinc-800/30 mb-6">
         <div className="rounded-[calc(2rem-0.375rem)] bg-white dark:bg-zinc-900 p-4 md:p-5">
-          <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex flex-col gap-4">
             {/* Search */}
-            <div className="relative flex-1">
+            <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-zinc-400" />
               <input
                 type="text"
@@ -90,49 +90,51 @@ export function SubmissionsPage() {
               />
             </div>
 
-            {/* Language filter */}
-            <div className="flex items-center gap-2">
-              <Filter className="size-3.5 text-zinc-400 flex-shrink-0" />
-              <div className="flex gap-1 overflow-x-auto pb-1">
-                {languages.map((lang) => (
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+              {/* Language filter */}
+              <div className="flex items-center gap-2 min-w-0 w-full sm:w-auto">
+                <Filter className="size-3.5 text-zinc-400 flex-shrink-0" />
+                <div className="flex gap-1 overflow-x-auto pb-1 no-scrollbar w-full">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => {
+                        setFilterLang(lang);
+                        setPage(1);
+                      }}
+                      className={cn(
+                        "px-3 py-1.5 rounded-lg text-[11px] font-medium whitespace-nowrap transition-all duration-200",
+                        filterLang === lang
+                          ? "bg-zinc-950 dark:bg-zinc-50 text-white dark:text-zinc-950"
+                          : "text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                      )}
+                    >
+                      {LANG_DISPLAY[lang] || lang}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Status filter */}
+              <div className="flex gap-1 overflow-x-auto pb-1 no-scrollbar w-full sm:w-auto justify-start sm:justify-end">
+                {statuses.map((st) => (
                   <button
-                    key={lang}
+                    key={st}
                     onClick={() => {
-                      setFilterLang(lang);
+                      setFilterStatus(st);
                       setPage(1);
                     }}
                     className={cn(
                       "px-3 py-1.5 rounded-lg text-[11px] font-medium whitespace-nowrap transition-all duration-200",
-                      filterLang === lang
+                      filterStatus === st
                         ? "bg-zinc-950 dark:bg-zinc-50 text-white dark:text-zinc-950"
                         : "text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                     )}
                   >
-                    {LANG_DISPLAY[lang] || lang}
+                    {st}
                   </button>
                 ))}
               </div>
-            </div>
-
-            {/* Status filter */}
-            <div className="flex gap-1">
-              {statuses.map((st) => (
-                <button
-                  key={st}
-                  onClick={() => {
-                    setFilterStatus(st);
-                    setPage(1);
-                  }}
-                  className={cn(
-                    "px-3 py-1.5 rounded-lg text-[11px] font-medium whitespace-nowrap transition-all duration-200",
-                    filterStatus === st
-                      ? "bg-zinc-950 dark:bg-zinc-50 text-white dark:text-zinc-950"
-                      : "text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                  )}
-                >
-                  {st}
-                </button>
-              ))}
             </div>
           </div>
         </div>
@@ -195,11 +197,11 @@ export function SubmissionsPage() {
 
           {/* Pagination */}
           {data && data.total > 0 && (
-            <div className="flex items-center justify-between px-6 py-4 border-t border-black/[0.04] dark:border-white/[0.04]">
-              <span className="text-[11px] text-zinc-400 font-mono">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 border-t border-black/[0.04] dark:border-white/[0.04]">
+              <span className="text-[11px] text-zinc-400 font-mono text-center sm:text-left">
                 Showing {((data.page - 1) * data.limit) + 1} to {Math.min(data.page * data.limit, data.total)} of {data.total} submissions
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-end">
                 <button
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={data.page === 1}
