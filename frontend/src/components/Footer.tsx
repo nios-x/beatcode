@@ -35,7 +35,7 @@ export function Footer() {
             },
             {
               title: "Legal",
-              links: ["Privacy", "Terms", "Security"],
+              links: ["Privacy", "Terms", "Security", "License"],
             },
           ].map((group) => (
             <div key={group.title}>
@@ -45,12 +45,21 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {group.links.map((link) => (
                   <li key={link}>
-                    <a
-                      href="#"
-                      className="text-[13px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-300 font-medium"
-                    >
-                      {link}
-                    </a>
+                    {link === "License" ? (
+                      <Link
+                        to="/license"
+                        className="text-[13px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-300 font-medium"
+                      >
+                        {link}
+                      </Link>
+                    ) : (
+                      <a
+                        href="#"
+                        className="text-[13px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-300 font-medium"
+                      >
+                        {link}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -60,9 +69,14 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-black/[0.04] dark:border-white/[0.04] flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500 tracking-wide">
-            © {new Date().getFullYear()} Beatcode. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500 tracking-wide">
+              © {new Date().getFullYear()} Beatcode. All rights reserved.
+            </p>
+            <p className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500 tracking-wide">
+              Made by <a href="https://github.com/nios-x/beatcode" target="_blank" rel="noopener noreferrer" className="text-violet-500 hover:underline">nios-x</a>
+            </p>
+          </div>
           <div className="flex items-center gap-4">
             {["GitHub", "Discord", "X"].map((social) => (
               <a

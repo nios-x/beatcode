@@ -8,6 +8,7 @@ import { SubmissionDetailPage } from "@/pages/SubmissionDetailPage";
 import { PlaygroundPage } from "@/pages/PlaygroundPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { SettingsPage } from "@/pages/SettingsPage";
+import { LicensePage } from "@/pages/LicensePage";
 import { AppLayout } from "@/components/AppLayout";
 import {
   QueryClient,
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/license" element={<LicensePage />} />
           {/* App routes (with sidebar layout) */}
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
