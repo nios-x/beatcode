@@ -1,8 +1,10 @@
 # Beatcode - Online Coding Platform
 
 Beatcode is a scalable, real-time online coding platform that allows users to write, submit, and execute code in various programming languages (e.g., Node.js, Python), and instantly view their output. It features a modern user interface, robust backend processing, and an isolated code execution environment.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/486e8d50-3db3-4c45-b756-1b3dc0827bb5" />
 
 ## 🏗 System Architecture
+<img width="6204" height="3274" alt="Untitled-2026-07-16-0001" src="https://github.com/user-attachments/assets/ebe7981b-952d-4bf6-9658-3f02e95d1a82" />
 
 The application is built on a distributed microservices architecture designed to handle high concurrency and isolate the risk of code execution.
 
@@ -15,6 +17,7 @@ The application is built on a distributed microservices architecture designed to
 7. **Real-time Streaming**: The backend subscribes to the Pub/Sub channel and routes the execution results back to the original client using **Server-Sent Events (SSE)**.
 
 ### ⚡ Why Server-Sent Events (SSE)?
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/43525b80-6862-4951-b3f6-3a9d2c2f8973" />
 
 When building the real-time execution feedback loop, SSE was deliberately chosen over alternatives:
 * **WebSockets**: Requires maintaining a persistent, full-duplex connection for every active client. This consumes a significant amount of memory on the server and is notoriously difficult to scale under a large number of concurrent users.
@@ -24,6 +27,7 @@ When building the real-time execution feedback loop, SSE was deliberately chosen
 ---
 
 ## 🛠 Tech Stack
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/06c9c044-c0a9-43c0-9402-5039b05e8365" />
 
 ### Frontend
 - **Framework**: React 19, TypeScript, Vite
