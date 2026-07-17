@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchSubmissions } from "@/lib/api";
 import type { Submission } from "@/lib/api";
 
-const languages = ["All", "python", "cpp", "javascript", "typescript", "rust", "go", "java", "node"];
+const languages = ["All", "python", "node"];
 const statuses = ["All", "Success", "Error", "Pending"];
 
 const LANG_DISPLAY: Record<string, string> = {
