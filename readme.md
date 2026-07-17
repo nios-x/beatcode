@@ -82,6 +82,19 @@ beatcode/
 
 ---
 
+## 🛡️ Security & Execution Limits
+
+To ensure the safety and stability of the platform, the worker node implements several protective measures during code execution:
+
+- **Malicious Code Prevention**: Before execution, the code is analyzed using regular expressions (`isMalicious` check) to block dangerous modules and functions.
+  - **Python**: Blocks `os`, `sys`, `subprocess`, `shutil`, `importlib`, `builtins`, `socket`, `eval`, `exec`, `open`, and `__import__`.
+  - **Node.js**: Blocks `require`, `import ... from`, `child_process`, `fs`, `process`, `eval`, and `Function`.
+  Submissions violating these rules immediately fail with a "Security Error".
+- **Execution Timeout**: A strict 5-second (5000ms) time limit is enforced on all code executions. If a process exceeds this limit (e.g., due to an infinite loop), it is forcefully terminated (`SIGKILL`), and a "Time Limit Exceeded" error is returned.
+- **Reliable Result Delivery**: The worker publishes the execution results (output, error, and exit code) to the `worker-response` Redis channel. It features a retry mechanism (up to 3 times) if the initial publish operation fails.
+
+---
+
 ## 🔧 Setup & Local Development
 
 ### Prerequisites
