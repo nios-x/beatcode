@@ -5,7 +5,6 @@ import {
   Play,
   User,
   Settings,
-  CalendarDays,
   Zap,
   LogOut,
   Menu,
@@ -19,7 +18,6 @@ const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
   { icon: FileCode2, label: "Submissions", href: "/submissions" },
   { icon: Play, label: "Playground", href: "/playground" },
-  { icon: CalendarDays, label: "Daily Snippet", href: "/daily" },
   { icon: User, label: "Profile", href: "/profile" },
   { icon: Settings, label: "Settings", href: "/settings" },
 ];

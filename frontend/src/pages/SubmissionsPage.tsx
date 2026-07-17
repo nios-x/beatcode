@@ -74,7 +74,7 @@ export function SubmissionsPage() {
       {/* Filters */}
       <div className="rounded-[2rem] p-1.5 ring-1 ring-black/[0.05] dark:ring-white/[0.06] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] bg-white/50 dark:bg-zinc-800/30 mb-6">
         <div className="rounded-[calc(2rem-0.375rem)] bg-white dark:bg-zinc-900 p-4 md:p-5">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 min-w-0">
             {/* Search */}
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-zinc-400" />
@@ -90,11 +90,11 @@ export function SubmissionsPage() {
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between min-w-0">
               {/* Language filter */}
               <div className="flex items-center gap-2 min-w-0 w-full sm:w-auto">
                 <Filter className="size-3.5 text-zinc-400 flex-shrink-0" />
-                <div className="flex gap-1 overflow-x-auto pb-1 no-scrollbar w-full">
+                <div className="flex gap-1 overflow-x-auto pb-1 no-scrollbar w-full min-w-0">
                   {languages.map((lang) => (
                     <button
                       key={lang}
@@ -116,7 +116,7 @@ export function SubmissionsPage() {
               </div>
 
               {/* Status filter */}
-              <div className="flex gap-1 overflow-x-auto pb-1 no-scrollbar w-full sm:w-auto justify-start sm:justify-end">
+              <div className="flex gap-1 overflow-x-auto pb-1 no-scrollbar w-full sm:w-auto justify-start sm:justify-end min-w-0">
                 {statuses.map((st) => (
                   <button
                     key={st}

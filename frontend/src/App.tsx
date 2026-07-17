@@ -8,7 +8,6 @@ import { SubmissionDetailPage } from "@/pages/SubmissionDetailPage";
 import { PlaygroundPage } from "@/pages/PlaygroundPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { SettingsPage } from "@/pages/SettingsPage";
-import { DailyPage } from "@/pages/DailyPage";
 import { AppLayout } from "@/components/AppLayout";
 import {
   QueryClient,
@@ -33,7 +32,6 @@ function App() {
             <Route path="/playground" element={<PlaygroundPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/daily" element={<DailyPage />} />
           </Route>
         </Routes>
       </QueryClientProvider>

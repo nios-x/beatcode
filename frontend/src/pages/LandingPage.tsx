@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { authClient } from "@/lib/authclient";
 import { Spotlight } from "@/components/ui/spotlight";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { motion } from "motion/react";
@@ -187,6 +188,9 @@ function GhostCTA({ href, children }: { href: string; children: React.ReactNode 
 
 /* ═══════════════════════════════════════════════════════════ */
 export function LandingPage() {
+  const { data: session, isPending } = authClient.useSession();
+  const ctaLink = isPending ? "#" : session ? "/dashboard" : "/login";
+
   return (
     <div className="relative bg-[#F2F2F0] dark:bg-zinc-950 overflow-hidden">
       <div className="hidden lg:block absolute top-30 right-30 rotate-[40deg] translate-x-1/2 overflow-hidden w-[700px]">
@@ -291,7 +295,7 @@ export function LandingPage() {
 
             <ScrollReveal delay={240}>
               <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
-                <PrimaryCTA to="/playground" large>
+                <PrimaryCTA to={ctaLink} large>
                   Start Coding Free
                 </PrimaryCTA>
                 <GhostCTA href="#features">Explore Features</GhostCTA>
