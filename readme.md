@@ -1,5 +1,6 @@
+<center>
 # Beatcode - Online Coding Platform
-
+</center>
 Beatcode is a scalable, real-time online coding platform that allows users to write, submit, and execute code in various programming languages (e.g., Node.js, Python), and instantly view their output. It features a modern user interface, robust backend processing, and an isolated code execution environment.
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/486e8d50-3db3-4c45-b756-1b3dc0827bb5" />
